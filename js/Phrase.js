@@ -25,4 +25,7 @@
 
  }
 
+ let ph = new Phrase("I LOVE YOU")
 
+console.log(ph)
+console.log(ph.phrase)
