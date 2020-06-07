@@ -10,26 +10,23 @@
 
     //adds letter placeholders to the display when the game starts. Each letter is presented by an empty box, one li element for each letter.
     addPhraseToDisplay() {
+        let phraseBox = document.getElementById("phrase")
         let arrPhrase = this.phrase.split(''); 
-        arrPhrase.forEach(letter => console.log(letter));
-    
 
-        /*<div id="phrase" class="section">
-    <ul>
-        <li class="hide letter h">h</li>
-        <li class="hide letter o">o</li>
-        <li class="hide letter w">w</li>
-        <li class="space"> </li>
-        <li class="hide letter a">a</li>
-        <li class="hide letter r">r</li>
-        <li class="hide letter e">e</li>
-        <li class="space"> </li>
-        <li class="hide letter y">y</li>
-        <li class="hide letter o">o</li>
-        <li class="hide letter u">u</li>
-    </ul>
-</div>
-    */
+        arrPhrase.forEach(letter => {
+            let li = document.createElement('li')
+            if (letter !== ' ') {
+               let newLi = phraseBox.appendChild(li)
+               newLi.innerHTML = `${letter}`
+               newLi.classList.add(`hide`)
+               newLi.classList.add(`letter`)
+               newLi.classList.add(`${letter}`)
+            } else {
+               let newLi = phraseBox.appendChild(li)
+               newLi.classList.add(`space`)
+            }
+
+        });
     }
 
     //checks to see if the letter selected by the player matches a letter in the phrase.
