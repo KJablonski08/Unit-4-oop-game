@@ -18,20 +18,30 @@
             if (letter !== ' ') {
                let newLi = phraseBox.appendChild(li)
                newLi.innerHTML = `${letter}`
-               newLi.classList.add(`hide`)
                newLi.classList.add(`letter`)
                newLi.classList.add(`${letter}`)
             } else {
                let newLi = phraseBox.appendChild(li)
                newLi.classList.add(`space`)
             }
-
         });
+
+
     }
 
     //checks to see if the letter selected by the player matches a letter in the phrase.
     checkLetter() {
-        
+        let arrPhrase = this.phrase.split(''); 
+        document.getElementById("qwerty").addEventListener("click", function(){
+            arrPhrase.forEach(letter => {
+                if(event.target.innerHTML === letter) {
+                    let els = document.getElementsByClassName(`letter ${letter}`);
+                    for (let i = 0; i < els.length; i++) {
+                        els[i].classList.add('show')
+                    }
+                }
+            })
+          });
     }
 
     //reveals the letter(s) on the board that matches the player's selection.
@@ -46,3 +56,4 @@
 console.log(ph)
 console.log(ph.phrase)
 ph.addPhraseToDisplay();
+ph.checkLetter();
