@@ -4,8 +4,8 @@
 
  class Game {
      constructor(missed, phrases, activePhrase) {
-         this.missed = missed;
-         this.phrases = phrases;
-         this.activePhrase = activePhrase; 
+         this.missed = 0;
+         this.phrases = [];
+         this.activePhrase = null; 
      }
  }
