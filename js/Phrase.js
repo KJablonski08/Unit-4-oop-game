@@ -18,42 +18,42 @@
             if (letter !== ' ') {
                let newLi = phraseBox.appendChild(li)
                newLi.innerHTML = `${letter}`
-               newLi.classList.add(`letter`)
-               newLi.classList.add(`${letter}`)
+               newLi.classList.add(`hide`);
+               newLi.classList.add(`letter`);
+               newLi.classList.add(`${letter}`);
             } else {
                let newLi = phraseBox.appendChild(li)
                newLi.classList.add(`space`)
             }
         });
-
-
     }
 
     //checks to see if the letter selected by the player matches a letter in the phrase.
     checkLetter() {
-        let arrPhrase = this.phrase.split(''); 
+        let arrPhrase = this.phrase.split('');
         document.getElementById("qwerty").addEventListener("click", function(){
             arrPhrase.forEach(letter => {
                 if(event.target.innerHTML === letter) {
-                    let els = document.getElementsByClassName(`letter ${letter}`);
-                    for (let i = 0; i < els.length; i++) {
-                        els[i].classList.add('show')
-                    }
+                    ph.showMatchedLetter(letter);
                 }
             })
-          });
+        })
     }
 
     //reveals the letter(s) on the board that matches the player's selection.
-    showMatchedLetter() {
-
+    showMatchedLetter(letter) {
+        let matches = document.getElementsByClassName(letter);
+        for (let i = 0; i < matches.length; i++) {
+            matches[i].classList.remove('hide')
+            matches[i].classList.add('show')
+        }
     }
 
  }
 
- let ph = new Phrase("I LOVE YOU")
-
-console.log(ph)
-console.log(ph.phrase)
+let ph = new Phrase("I LOVE YOU")
 ph.addPhraseToDisplay();
 ph.checkLetter();
+
+
+
