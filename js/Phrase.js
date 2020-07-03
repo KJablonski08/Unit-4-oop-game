@@ -36,6 +36,7 @@
                 this.showMatchedLetter(letter)
             }
         })
+        return this.phrase.includes(letter)
     }
 
     //reveals the letter(s) on the board that matches the player's selection.

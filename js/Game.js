@@ -31,7 +31,11 @@
      handleInteraction(key) {
         key.disabled = true;
         console.log(this.activePhrase)
-        const letter = this.activePhrase.checkLetter(key.innerHTML)
+        let letter = this.activePhrase.checkLetter(key.innerHTML)
+        console.log(letter)
+        if (letter !== true) {
+            console.log('you missed!')
+        }
         this.checkForWin();
 
      }
@@ -43,7 +47,6 @@
      //checks to see if the player has revealed all of the letters in the active phrase.
      checkForWin() {
         let isShow = document.getElementsByClassName('show')
-        console.log(isShow.length)
         let winPhrase = this.activePhrase.phrase.replace(/\s/g, '')
         if (isShow.length === winPhrase.length) {
             return true
