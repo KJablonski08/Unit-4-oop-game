@@ -31,7 +31,8 @@
      handleInteraction() {
         let phrase = this.activePhrase
         document.getElementById("qwerty").addEventListener("click", function(){
-            phrase.checkLetter(event.target.innerHTML)
+            console.log(phrase.checkLetter(event.target.innerHTML) ) 
+            
             
         })
      }

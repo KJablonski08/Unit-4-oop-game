@@ -32,12 +32,9 @@
     //checks to  if the letter selected by the player matches a letter in the phrase.
     checkLetter(letter) {
         let arrPhrase = this.phrase.split('')
-        arrPhrase.forEach(l => {
+        arrPhrase.forEach( l => {
             if (l === letter ) {
-                console.log('you sunk my battleship')
-                return true
-            } else {
-                return false
+                this.showMatchedLetter(letter)
             }
         })
     }
