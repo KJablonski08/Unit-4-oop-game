@@ -32,8 +32,8 @@
         key.disabled = true;
         console.log(this.activePhrase)
         let letter = this.activePhrase.checkLetter(key.innerHTML)
-        console.log(letter)
         if (letter !== true) {
+            this.removeLife();
             console.log('you missed!')
         }
         this.checkForWin();
@@ -42,6 +42,12 @@
 
      //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
      removeLife() {
+         this.missed += 1;
+         const tries = document.querySelectorAll('.tries')
+         tries[this.missed - 1].children[0].src = 'images/lostHeart.png'
+         if (this.missed === 5 ) {
+             this.gameOver();
+         }
      }
 
      //checks to see if the player has revealed all of the letters in the active phrase.
@@ -56,7 +62,7 @@
 
      //displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message
      gameOver() {
-
+        console.log('Game Over!!!!')
      }
 
  }
