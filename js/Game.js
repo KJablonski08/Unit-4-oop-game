@@ -28,23 +28,26 @@
      }
 
      //checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess
-     handleInteraction() {
-        let phrase = this.activePhrase
-        document.getElementById("qwerty").addEventListener("click", function(){
-            console.log(phrase.checkLetter(event.target.innerHTML) ) 
-            
-            
-        })
+     handleInteraction(key) {
+        key.disabled = true;
+        console.log(this.activePhrase)
+        const letter = this.activePhrase.checkLetter(key.innerHTML)
+        this.checkForWin();
+
      }
 
      //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
      removeLife() {
-
      }
 
      //checks to see if the player has revealed all of the letters in the active phrase.
      checkForWin() {
-     
+        let isShow = document.getElementsByClassName('show')
+        console.log(isShow.length)
+        let winPhrase = this.activePhrase.phrase.replace(/\s/g, '')
+        if (isShow.length === winPhrase.length) {
+            console.log('we have a winner')
+        }
 
      }
 
