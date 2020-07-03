@@ -29,8 +29,11 @@
 
      //checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess
      handleInteraction() {
-
-         
+        let phrase = this.activePhrase
+        document.getElementById("qwerty").addEventListener("click", function(){
+            phrase.checkLetter(event.target.innerHTML)
+            
+        })
      }
 
      //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
@@ -40,6 +43,7 @@
 
      //checks to see if the player has revealed all of the letters in the active phrase.
      checkForWin() {
+     
 
      }
 

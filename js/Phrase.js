@@ -5,14 +5,14 @@
  class Phrase {
 
     constructor(phrase) {
-        this.phrase = phrase;
+        this.phrase = phrase.phrase.toLowerCase();
     }
 
     //adds letter placeholders to the display when the game starts. Each letter is presented by an empty box, one li element for each letter.
     addPhraseToDisplay() {
+        console.log(this.phrase)
         let phraseBox = document.getElementById("phrase")
-        let phrase = this.phrase.phrase;
-        let arrPhrase = phrase.split(''); 
+        let arrPhrase = this.phrase.split('')
 
         arrPhrase.forEach(letter => {
             let li = document.createElement('li')
@@ -29,15 +29,16 @@
         });
     }
 
-    //checks to see if the letter selected by the player matches a letter in the phrase.
-    checkLetter() {
-        let arrPhrase = this.phrase.split('');
-        document.getElementById("qwerty").addEventListener("click", function(){
-            arrPhrase.forEach(letter => {
-                if(event.target.innerHTML === letter) {
-                    ph.showMatchedLetter(letter);
-                }
-            })
+    //checks to  if the letter selected by the player matches a letter in the phrase.
+    checkLetter(letter) {
+        let arrPhrase = this.phrase.split('')
+        arrPhrase.forEach(l => {
+            if (l === letter ) {
+                console.log('you sunk my battleship')
+                return true
+            } else {
+                return false
+            }
         })
     }
 
