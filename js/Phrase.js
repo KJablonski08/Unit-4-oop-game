@@ -5,13 +5,14 @@
  class Phrase {
 
     constructor(phrase) {
-        this.phrase = phrase.toLowerCase();
+        this.phrase = phrase;
     }
 
     //adds letter placeholders to the display when the game starts. Each letter is presented by an empty box, one li element for each letter.
     addPhraseToDisplay() {
         let phraseBox = document.getElementById("phrase")
-        let arrPhrase = this.phrase.split(''); 
+        let phrase = this.phrase.phrase;
+        let arrPhrase = phrase.split(''); 
 
         arrPhrase.forEach(letter => {
             let li = document.createElement('li')
@@ -50,10 +51,6 @@
     }
 
  }
-
-let ph = new Phrase("I LOVE YOU")
-ph.addPhraseToDisplay();
-ph.checkLetter();
 
 
 

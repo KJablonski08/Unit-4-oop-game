@@ -2,7 +2,9 @@
  * Project 4 - OOP Game App
  * app.js */
 
-document.addEventListener('DOMContentLoaded', () => {
-    new Game()    
-  })
-  
+let startButton = document.getElementById("btn__reset")
+startButton.addEventListener("click", () => {
+        const game = new Game();
+        game.startGame();
+});
+

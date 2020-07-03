@@ -5,25 +5,32 @@
  class Game {
      constructor(missed, phrases, activePhrase) {
          this.missed = 0;
-         this.phrases = [];
+         this.phrases = [
+            {phrase: 'I Love You'},
+            {phrase: 'Right as Rain'},
+            {phrase: 'On Cloud Nine'},
+            {phrase: 'Calm Before the Storm'},
+            {phrase: 'Peace and Quiet'}
+        ];
          this.activePhrase = null; 
      }
 
      //hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase
      startGame() {
-        document.getElementById("btn__reset").addEventListener("click", function(){
-            document.getElementById("overlay").style.display = 'none'
-          });
+        document.getElementById("overlay").style.display = 'none'
+        this.activePhrase = new Phrase(this.getRandomPhrase());
+        this.activePhrase.addPhraseToDisplay();
      }
 
      //randomly retrieves one of the phrases stored in the phrases array and returns it
      getRandomPhrase() {
-
+        return this.phrases[Math.floor(Math.random() * this.phrases.length)];
      }
 
      //checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess
      handleInteraction() {
 
+         
      }
 
      //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
@@ -42,7 +49,3 @@
      }
 
  }
-
- let newGame = new Game();
-
-newGame.startGame();
