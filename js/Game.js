@@ -46,9 +46,9 @@
         console.log(isShow.length)
         let winPhrase = this.activePhrase.phrase.replace(/\s/g, '')
         if (isShow.length === winPhrase.length) {
-            console.log('we have a winner')
+            return true
+            console.log('we have a winner!')
         }
-
      }
 
      //displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message
