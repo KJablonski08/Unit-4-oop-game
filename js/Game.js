@@ -15,19 +15,33 @@
          this.activePhrase = null; 
      }
 
-     //hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase
+    /**
+     * Hides the start screen overlay
+     * calls the getRandomPhrase() method
+     * Begins game by setting a random phrase and displaying it
+     */
+
      startGame() {
         document.getElementById("overlay").style.display = 'none'
         this.activePhrase = new Phrase(this.getRandomPhrase());
         this.activePhrase.addPhraseToDisplay();
      }
 
-     //randomly retrieves one of the phrases stored in the phrases array and returns it
+      /**
+     * Randomly retrieves one of the phrases stored in the phrases array and returns it 
+     * @return {Object} Phrase to be used 
+     */
+
      getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
      }
 
-     //checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess
+     /**
+     * checks to see if the button clicked by the player matches a letter in the phrase
+     * directs the game based on a correct or incorrect guess
+     * @param (htmlButtonElement) letter button on keyboard 
+     */
+
      handleInteraction(key) {
         key.disabled = true;
         console.log(this.activePhrase)
@@ -38,7 +52,12 @@
         this.checkForWin();
      }
 
-     //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
+     /**
+     * Increments missed by 1
+     * Removes a life from scoreboard
+     * Ends game if there are no lives
+     */
+
      removeLife() {
          this.missed += 1;
          const tries = document.querySelectorAll('.tries')
@@ -48,7 +67,11 @@
          }
      }
 
-     //checks to see if the player has revealed all of the letters in the active phrase.
+     /**
+     * checks to see if the player has revealed all of the letters in the active phrase
+     * @return {boolean} true if won, false if it wasn't
+     */
+
      checkForWin() {
         let isShow = document.getElementsByClassName('show')
         let winPhrase = this.activePhrase.phrase.replace(/\s/g, '')
@@ -57,7 +80,12 @@
         }
      }
 
-     //displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message
+     /**
+     * Displays original start screen overlay
+     * Depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message
+     * Resets so player can try again 
+     */
+
      gameOver() {
         document.getElementById("overlay").style.display = ''
         if (this.missed < 5) {
