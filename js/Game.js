@@ -47,7 +47,10 @@
         console.log(this.activePhrase)
         let letter = this.activePhrase.checkLetter(key.innerHTML)
         if (letter !== true) {
+            key.className = 'wrong'
             this.removeLife();
+        } else {
+            key.className = 'chosen'
         }
         this.checkForWin();
      }
@@ -97,6 +100,9 @@
         }
         this.missed = 0
         this.activePhrase = null;
+        document.querySelectorAll('.keyrow button').forEach( btn => {
+            btn.className = 'key';
+        })
         document.querySelectorAll('.key').forEach(key => {
             key.disabled = false;
         });
