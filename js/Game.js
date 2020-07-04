@@ -34,10 +34,8 @@
         let letter = this.activePhrase.checkLetter(key.innerHTML)
         if (letter !== true) {
             this.removeLife();
-            console.log('you missed!')
         }
         this.checkForWin();
-
      }
 
      //method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image and increments the missed property
@@ -55,14 +53,35 @@
         let isShow = document.getElementsByClassName('show')
         let winPhrase = this.activePhrase.phrase.replace(/\s/g, '')
         if (isShow.length === winPhrase.length) {
-            return true
-            console.log('we have a winner!')
+            this.gameOver();
         }
      }
 
      //displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message
      gameOver() {
-        console.log('Game Over!!!!')
+        document.getElementById("overlay").style.display = ''
+        if (this.missed < 5) {
+            document.getElementById('game-over-message').innerHTML = 'Congratulations! You Win!'
+            document.getElementById("overlay").className = 'win'
+        } else {
+            document.getElementById('game-over-message').innerHTML = 'You Lose, Try Again'
+            document.getElementById("overlay").className = 'lose'
+        }
+        this.missed = 0
+        this.activePhrase = null;
+        document.querySelectorAll('.key').forEach(key => {
+            key.disabled = false;
+        });
+        document.querySelectorAll('.letter').forEach(li => {
+            li.remove();
+        })
+        document.querySelectorAll('.space').forEach(li => {
+            li.remove();
+        })
+        const tries = document.querySelectorAll('.tries')
+        tries.forEach( t => {
+            t.children[0].src = 'images/liveHeart.png'
+        })
      }
 
  }
